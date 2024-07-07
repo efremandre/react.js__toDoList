@@ -1,0 +1,17 @@
+.wrapperInputCreateTask {
+  background: #e8e8e8;
+}
+
+.inputCreate {
+  border-radius: 12px;
+  background: #e8e8e8;
+  box-shadow:  8px 8px 11px #cecece,
+  -8px -8px 11px #f2f2f2;
+}
+
+.inputCreate:hover,
+.inputCreate:active {
+  cursor: pointer;
+  box-shadow:  8px 8px 8px #cecece,
+  -8px -8px 8px #f2f2f2;
+}
