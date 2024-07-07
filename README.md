@@ -11,9 +11,7 @@
 и возможно даже прикрутить к бэкенду, чтобы была учетка.
 
 Пока приложение рассчитано для работы с декстопа, т.е. указатель должен быть мышка. Так как для тачпада надо продумать UI/UX.
-<<<<<<< HEAD
 
-![img.png](img.png)
-=======
 ![img](https://github.com/efremandre/react.js__toDoList/assets/25119216/f616f75e-742a-4f66-94ee-4a19830a88dd)
->>>>>>> 8edcd57b8b708c6f384be7a174cfde199900a185
+
+https://efremandre.github.io/react.js__toDoList/
