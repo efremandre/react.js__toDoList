@@ -1,4 +1,5 @@
 import React, { ChangeEvent, KeyboardEvent } from 'react'
+import {saveToLocalStorage, loadFromLocalStorage} from '../utility/localstorage.ts'
 import Taskcreater from '../components/taskcreater/Taskcreater'
 import Tasks from '../components/tasks/Tasks'
 import {Cancel} from "@mui/icons-material";
@@ -20,12 +21,15 @@ const StyledCancelIcons = styled(Cancel)({
 });
 
 const App: React.FC = () => {
-
-	const [tasks, setTasks] = React.useState<Task[]>([])
+	const [tasks, setTasks] = React.useState<Task[]>( () => loadFromLocalStorage('tasks') || [] )
 	const [inputValue, setInputValue] = React.useState<string>('')
 	const [changeInput, setChangeInputValue] = React.useState<string>('')
 	const [taskIndex, setTaskIndex] = React.useState<number | null>(null)
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
+
+	React.useEffect(() => {
+		saveToLocalStorage('tasks', tasks);
+	}, [tasks])
 
 	const getValue = (ev: ChangeEvent<HTMLInputElement>) => {
 		setInputValue(ev.target.value)
@@ -68,7 +72,7 @@ const App: React.FC = () => {
 			handleCancel()
 			return
 		}
-		const tempArr = tasks.map((task, i) => (i === index) ? { ...task, taskTitle: changeInput, isEdit: false } : task)
+		const tempArr = tasks.map((task, i) => (i === index) ? { ...task, taskTitle: changeInput } : task)
 		setTasks(tempArr)
 		setChangeInputValue('')
 		setTaskIndex(null)
@@ -106,7 +110,7 @@ const App: React.FC = () => {
 				</ul>
 			</div> :
 				<button className='fixed top-4 left-4 max-w-60 p-3 text-xs text-gray-400 border border-gray-300 rounded-md' onClick={toggleInfoShow}>Info</button>}
-			<div className="wrapper flex flex-col max-w-screen-md min-h-full pt-6 pb-6 mx-auto">
+			<div className="wrapper flex flex-col max-w-screen-md min-h-full pt-6 pb-16 mx-auto">
 				<div className="grow shrink-0 basis-auto flex flex-col gap-5">
 					<Tasks
 						tasks={tasks}

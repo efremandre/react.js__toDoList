@@ -6,8 +6,8 @@ import { styled } from '@mui/system';
 type TaskCreatorProps = {
 	inputValue: string
 	handleClearTextInput: () => void
-	getValue: (ev: ChangeEvent<HTMLInputElement>) => void,
-	handlePressKeyCreateInput: (ev: KeyboardEvent<HTMLInputElement>) => void,
+	getValue: (ev: ChangeEvent<HTMLInputElement>) => void
+	handlePressKeyCreateInput: (ev: KeyboardEvent<HTMLInputElement>) => void
 	handleCreateTask: () => void
 }
 
@@ -18,6 +18,8 @@ const StyledCancelIcons = styled(Cancel)({
 		color: 'red',
 	}
 });
+
+
 
 const Taskcreater: React.FC<TaskCreatorProps> = ({
 	inputValue,
